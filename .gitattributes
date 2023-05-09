@@ -1,0 +1,16 @@
+* text=auto
+
+# These files should not be normalized (keep LF)
+*.svg        -text
+*.jpg        -text
+*.jpeg       -text
+*.png        -text
+*.gif        -text
+*.ico        -text
+
+
+
+
+
+
+
