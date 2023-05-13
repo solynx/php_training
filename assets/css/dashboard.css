@@ -1,0 +1,22 @@
+*{margin:0;padding:0}
+.sidebar{
+    width: 230px;
+    max-width: 230px;
+    background: #c8d6e5;
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+}
+.btn-show-restaurant:focus{
+    box-shadow: none !important;
+}
+.content-wrapper{
+    flex-grow: 1;
+    margin-left: 230px;
+}
+#more_restaurant,#more_order {
+    cursor: pointer;
+}
+#more_restaurant:hover,#more_order:hover{
+    opacity: 0.8;
+}
