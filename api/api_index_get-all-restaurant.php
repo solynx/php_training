@@ -25,10 +25,10 @@ while($restaurant = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             </div>
         </div>
     </p>
-<form method='POST' action='restaurant/restaurant_detail'>
-    <input type='hidden' name='restaurant_id' value='".$restaurant["id"]."'/>
+
+   
     <div class='text-center'>
-        <button type='submit' class='btn btn-info'>Xem Thông Tin</button>
+        <button class='btn btn-info btn-view-restaurant' data-restaurant-id='".$restaurant["id"]."'>Xem Thông Tin</button>
     </div>
 </form>
 </div>
@@ -59,12 +59,9 @@ while($restaurant = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             </div>
         </div>
     </p>
-<form method='POST' action='restaurant/restaurant_detail'>
-    <input type='hidden' name='restaurant_id' value='".$restaurant["id"]."'/>
     <div class='text-center'>
-        <button type='submit' class='btn btn-info'>Xem Thông Tin</button>
+        <button class='btn btn-info btn-view-restaurant' data-restaurant-id='".$restaurant["id"]."'>Xem Thông Tin</button>
     </div>
-</form>
 </div>
 </div>
 </div>"; 
@@ -93,12 +90,9 @@ while($restaurant = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             </div>
         </div>
     </p>
-<form method='POST' action='restaurant/restaurant_detail'>
-    <input type='hidden' name='restaurant_id' value='".$restaurant["id"]."'/>
     <div class='text-center'>
-        <button type='submit' class='btn btn-info'>Xem Thông Tin</button>
+         <button class='btn btn-info btn-view-restaurant' data-restaurant-id='".$restaurant["id"]."'>Xem Thông Tin</button>
     </div>
-</form>
 </div>
 </div>
 </div>"; 
