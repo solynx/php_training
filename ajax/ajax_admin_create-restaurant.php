@@ -2,15 +2,23 @@
 session_start();
 include_once "../includes/connect.php";
 include_once "../includes/functions.php";
+include_once "../includes/validation.php";
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["restaurant_name"];
-    $address= $_POST["restaurant_address"];
-    $fone_num = $_POST["restaurant_fone_num"];
-    $slot = $_POST["restaurant_slot"];
-    $price = $_POST["restaurant_price"];
-    $sale_price= $_POST["restaurant_sale_price"];
+    $data['name'] = $_POST["restaurant_name"];
+    $data['address']= $_POST["restaurant_address"];
+    $data['fone_num'] = $_POST["restaurant_fone_num"];
+    $data["slot"] = (int)$_POST["restaurant_slot"];
+    $data["price"] = (int)$_POST["restaurant_price"];
+    $data["sale_price"] = (int)$_POST["restaurant_sale_price"];
+ 
+    //accept image .jpg , .png
+    if(!imageValidate($_FILES["restaurant_image"])){
+        $data['status'] = false;
+        echo json_encode($data);die();
+    }
    
-    
+    $data = antiSQLInjectionXSS($dbc,$data);
+    extract($data);
     $file_name =random_string(36).$_FILES["restaurant_image"]["name"];
     header('Content-Type: application/json');
    
@@ -18,9 +26,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $uuid2 = "7e592794-ec72-11ed-a05b-0242ac120003";
     $order_num = rand(20,200);
     $star = rand(20,50)/10;
-    $query = "INSERT INTO tb_restaurant VALUES ('$uuid', '$name', '$star', '$slot','$price','$sale_price','$uuid2','$file_name ','$address','$fone_num','$order_num')";
+    $query = $dbc->prepare("INSERT INTO tb_restaurant (id, name, star_total, slot_num, price, sale_price, owner_id, image_url, address, fone_number, count_order) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $query->bind_param("ssdiiissssi", $uuid, $name, $star, $slot, $price, $sale_price, $uuid2, $file_name, $address, $fone_num, $order_num);
+    $result=$query->execute();
+
+    // $query = "INSERT INTO tb_restaurant VALUES ('$uuid', '$name', '$star', '$slot','$price','$sale_price','$uuid2','$file_name ','$address','$fone_num','$order_num')";
   
-    $result = mysqli_query($dbc,$query);
+    // $result = mysqli_query($dbc,$query);
    
     $data["status"]= false;
     if($result) {

@@ -24,7 +24,7 @@ include_once "../includes/connect.php";
         extract($result);
         $data["status"] = true;
         $data["data"] = "<div class='card'>
-        <img src='uploads/".$image_url."' class='card-img-top' alt='...'>
+        <img  src='uploads/".$image_url."' class='card-img-top img-max-height' alt='...'>
         <div class='card-body'>
             <h5 class='card-title'>".$name."</h5>
             <p class='card-text'>
@@ -43,7 +43,7 @@ include_once "../includes/connect.php";
                 </div>
             </div>
             </p>
-            
+            <div id='error_handing'></div>
             <div class='text-center'>
                <span class='d-flex' style='justify-content:space-evenly'>
                    

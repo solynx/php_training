@@ -30,3 +30,21 @@
     flex-grow: 1;
     align-items: center;
 }
+#restaurant-detail{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+.img-max-height{
+    max-height: 360px;
+}
+#order_confirm{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 18%;
+}
