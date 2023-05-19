@@ -10,7 +10,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $data["slot"] = (int)$_POST["restaurant_slot"];
     $data["price"] = (int)$_POST["restaurant_price"];
     $data["sale_price"] = (int)$_POST["restaurant_sale_price"];
- 
+    $flag = false;
+   
     //accept image .jpg , .png
     if(!imageValidate($_FILES["restaurant_image"])){
         $data['status'] = false;
